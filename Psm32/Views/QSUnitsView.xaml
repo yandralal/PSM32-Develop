@@ -1,0 +1,148 @@
+﻿<UserControl x:Class="Psm32.Views.QSUnitsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Psm32.Views"
+             xmlns:cc="clr-namespace:Psm32.CustomControls"
+             xmlns:converters="clr-namespace:Psm32.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <converters:DebugConverter x:Key="DebugConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>-->
+
+        <!--<Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock 
+                Grid.Column ="0"
+                Text="Quad Stimulation Units"
+                Style = "{StaticResource Header}"/>
+
+            <Button
+                Grid.Column="1"
+                Content="Scan"
+                Command="{Binding ScanCommand}"
+                Margin="10 0 0 0"/>
+
+            <Button
+                Grid.Column="2"
+                Content="Muscle Test Screen"
+                Command="{Binding CreateInMemoryMotorTaskCommand}"
+                Margin="10 0 0 0"/>
+        </Grid>-->
+
+       <!-- <Grid Grid.Row="1" Margin="0 10 10 0">
+            <Rectangle Fill="LightGray"/>
+        </Grid>
+        <ListView Grid.Row="1"
+                  Margin="0 25 0 0"
+                  ItemsSource="{Binding Units}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Padding ="0 0 20 0" Text="{Binding ID}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Name">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Padding ="0 0 20 0" Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Channels">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Padding ="0 0 20 0"  Text="{Binding NumOfChannels}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            
+            <ItemsControl Grid.Column="1" Name="ItemsControlLeft" ItemsSource="{Binding UnitsLeft}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <cc:QSUnitView
+                            Grid.Column="1" 
+                            Margin="0 20 0 0"/>
+                    </DataTemplate>
+
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <ItemsControl Grid.Column="2" Name="ItemsControlRight" ItemsSource="{Binding UnitsRight}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <cc:QSUnitView
+                            Grid.Column="1" 
+                            Margin="0 20 0 0"/>
+                    </DataTemplate>
+
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+
+
+        <!--<Grid Grid.Row="2" Margin="0 20 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            
+            <cc:QSUnitView 
+                Grid.Column="1"
+                Margin="0 0 50 0"/>
+            <cc:QSUnitView 
+                Grid.Column="2"
+                Margin="50 0 0 0"/>
+        </Grid>-->
+
+    </Grid>
+
+
+
+</UserControl>

@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="Psm32.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:Psm32.Views"
+             xmlns:cc="clr-namespace:Psm32.CustomControls"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="380">
+    <Grid 
+        Height="450"
+        Width="380">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="250"/>
+        </Grid.RowDefinitions>
+
+        <Border CornerRadius="10" Grid.RowSpan="2">
+            <Border.Background>
+                <SolidColorBrush Color="Purple" Opacity=".4"/>
+            </Border.Background>
+        </Border>
+
+        <StackPanel Grid.Row="0" VerticalAlignment="Center">
+            <Image Source="/Images/occamlogo.jpg" Width="80" Height="80"/>
+            <TextBlock Text="PowerStim32"
+                           FontWeight="Light"
+                           FontFamily="helvetica"
+                           FontSize="22"
+                           Foreground="White"
+                           Margin="0 10 0 0"
+                           HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" >
+            <StackPanel Orientation="Horizontal">
+                <TextBox FontFamily="Helvetica"
+                             FontWeight="Light"
+                             Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             Foreground="White"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Width="235"
+                             HorizontalContentAlignment="Left"
+                             Opacity="0.5"
+                             Height="25"
+                             Margin="63,0,0,0"/>
+                <iconPacks:PackIconMaterial Kind="Account" 
+                                                VerticalAlignment="Center" 
+                                                HorizontalAlignment="Center" 
+                                                Foreground="White"/>
+            </StackPanel>
+            <Border Width="250"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5"/>
+
+        <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+            <cc:BindablePasswordBox FontFamily="Helvetica"
+                             FontWeight="Light"
+                             Password="{Binding Password}"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             Foreground="White"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Width="235"
+                             HorizontalContentAlignment="Left"
+                             Opacity="0.5"
+                             Height="25"
+                             Margin="63,0,0,0"/>
+            <iconPacks:PackIconMaterial Kind="lock" 
+                                                VerticalAlignment="Center" 
+                                                HorizontalAlignment="Center" 
+                                                Foreground="White"/>
+        </StackPanel>
+        
+        <Border Width="250"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,30,0,10">
+                <Button 
+                    Width="100" 
+                    Height="40" 
+                    Content="LOGIN" 
+                    Margin="60,0,60,0"  
+                    FontFamily="Helvetica"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Background="Transparent"
+                    Command="{Binding LoginCommand}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="BorderThickness" Value="10"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+ 
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="White"/>
+                                    <Setter Property="Opacity" Value="0.4"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                        
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
+                <TextBlock Text="{Binding ErrorMsg, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Foreground="Red"/>
+
+            </StackPanel>
+        
+        </StackPanel>
+
+    </Grid>
+</UserControl>

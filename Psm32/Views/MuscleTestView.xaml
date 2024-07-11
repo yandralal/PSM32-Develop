@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="Psm32.Views.MuscleTestView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Psm32.Views"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:converters="clr-namespace:Psm32.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+        <converters:RampUpDurationSpanToStringConverter x:Key="RampUpDurationSpanToStringConverter"/>
+    </UserControl.Resources>
+    
+    <Grid Margin="50 20 50 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="550"/>
+        </Grid.RowDefinitions>
+    
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock 
+                Grid.Column ="0"
+                Text="Muscle Test"
+                Style = "{StaticResource Header}"/>
+
+            <Button
+                Grid.Column="1"
+                Content="Save"
+                IsEnabled="{Binding IsTestRunning, Converter={StaticResource InverseBooleanConverter}}"
+                Command="{Binding SaveMotorTaskCommand}"
+                Margin="10 0 0 0"/>
+
+            <Button
+                Grid.Column="2"
+                Content="Cancel"
+                IsEnabled="{Binding IsTestRunning, Converter={StaticResource InverseBooleanConverter}}"
+                Command="{Binding CancelMotorTaskCommand}"
+                Margin="10 0 0 0"/>
+        </Grid>
+        <Grid 
+            Grid.Row="1" 
+            HorizontalAlignment="Right"
+            Margin="0 10 0 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel 
+                Grid.Column="0" 
+                HorizontalAlignment="Center" 
+                Orientation="Horizontal"
+                Margin="0 0 20 0">
+                <StackPanel 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Right"
+                    Margin="10 3 10 0"
+                    Orientation="Horizontal">
+                    <RadioButton IsChecked="{Binding RampUpEnabled}" Content="On"/>
+                    <RadioButton IsChecked="{Binding RampUpEnabled, Converter={StaticResource InverseBooleanConverter}}" Content="Off"/>
+                </StackPanel>
+                <TextBlock>Ramp Up</TextBlock>
+                <TextBox Text="{Binding RampUpDuration, Converter={StaticResource RampUpDurationSpanToStringConverter}}"></TextBox>
+            </StackPanel>
+
+            <StackPanel 
+                Grid.Column="1" 
+                HorizontalAlignment="Center" 
+                Orientation="Horizontal"
+                Margin="0 0 20 0">
+                <TextBlock>Overall Run Time</TextBlock>
+                <TextBox Text="{Binding CurrentTestTime, Mode=OneWay}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button
+                    BorderBrush="{x:Null}"
+                    Height = "25"
+                    Width = "35"
+                    Command="{Binding StartTestCommand}"
+                    IsEnabled="{Binding IsTestRunning, Converter={StaticResource InverseBooleanConverter}}"
+                    Margin="10 0 0 0">
+                        <iconPacks:PackIconMaterial Kind="Play" Foreground="White" Width="15" Height="15" />
+                </Button>
+                <Button
+                    BorderBrush="{x:Null}"
+                    Height = "25"
+                    Width = "35"
+                    IsEnabled="{Binding IsTestRunning}"
+                    Command="{Binding PauseTestCommand}"
+                    Margin="10 0 0 0">
+                    <iconPacks:PackIconMaterial Kind="Pause" Foreground="White" Width="15" Height="15" />
+                </Button>
+                <Button
+                    BorderBrush="{x:Null}"
+                    Height = "25"
+                    Width = "35"
+                    Command="{Binding StopTestCommand}"
+                    Margin="10 0 0 0">
+                        <iconPacks:PackIconMaterial Kind="Stop" Foreground="White" Width="15" Height="15" />
+                </Button>
+            </StackPanel>
+            
+           
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <ListBox
+                    BorderThickness ="0" 
+                    Padding ="0 20 0 20"
+                    ItemsSource="{Binding MuscleTestUnits}"
+                    VerticalAlignment ="Center"
+                    VirtualizingPanel.ScrollUnit="Pixel"
+                    ScrollViewer.CanContentScroll="False"
+                    ScrollViewer.VerticalScrollBarVisibility ="Auto">
+                <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <local:MuscleTestUnitView/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+        </Grid>
+
+    </Grid>
+</UserControl>
+    

@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="Psm32.Views.SystemSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Psm32.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+            Grid.Row="0" 
+            Style = "{StaticResource Header}" 
+            Text="System Settings"/>
+
+        <Grid Grid.Row="1" Margin="0 25 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock 
+                Grid.Row="0" 
+                Grid.Column="0" 
+                Text="COM Port"/>
+            <TextBox 
+                Grid.Row="1" 
+                Grid.Column="0"  
+                Margin="0 5 0 0"
+                Text="{Binding ComPort, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock 
+                Grid.Row="0" 
+                Grid.Column="1"
+                Margin="5 0 0 0"
+                Text="COM Baud"/>
+            <TextBox 
+                Grid.Row="1" 
+                Grid.Column="1" 
+                Text="{Binding ComBoud, UpdateSourceTrigger=PropertyChanged}" 
+                Margin="10 5 0 0"/>
+        </Grid>
+
+
+        <Grid Grid.Row="3" 
+              Margin="0 10 0 0" 
+              HorizontalAlignment="Left"  
+              MaxWidth="50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Log Days"/>
+            <TextBox 
+                Grid.Row="1" 
+                Text="{Binding LogDays, UpdateSourceTrigger=PropertyChanged}" 
+                Margin="0 5 0 0"/>
+        </Grid>
+
+        <StackPanel Grid.Row="4" Margin="0 25 0 0" Orientation="Horizontal">
+            <Button Content="Save" Command="{Binding SaveCommand}"/>
+            <Button Content="Cancel" Margin="15 0 0 0" Command="{Binding CancelCommand}"/>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

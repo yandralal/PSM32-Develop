@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="Psm32.CustomControls.TopNavigationBarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:Psm32.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+
+    <Grid MaxWidth="1200"
+          Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}"
+          >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <RibbonMenuButton 
+            Grid.Column="0" 
+            Margin="0 0 20 0"
+            HorizontalAlignment="Left" 
+            x:Name="ExampleMenu" 
+            SmallImageSource="../Images/hamburger.png">
+            <RibbonMenuItem x:Name="ExampleMenuItem1" Header="Save1" />
+            <RibbonMenuItem x:Name="ExampleMenuItem2" Header="Save2" />
+        </RibbonMenuButton>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel
+                Grid.Column="0"
+                Margin="0 0 20 0"
+                Orientation="Horizontal">
+                <TextBlock 
+                    Margin="0 0 5 0"
+                    Padding="0 4 0 0"
+                    Text="Name"/>
+                <TextBox 
+                    Text ="{Binding MotorTaskName, UpdateSourceTrigger=PropertyChanged}"
+                    IsReadOnly="{Binding MotorTaskOpen}"
+                    Margin="0 0 5 0"
+                    Width="100"/>
+            </StackPanel>
+
+            <StackPanel
+                Grid.Column="1"
+                Margin="0 0 20 0"
+                Orientation="Horizontal">
+                <TextBlock 
+                    Margin="0 0 5 0"
+                    Padding="0 4 0 0"
+                    Text="Patient ID"/>
+                <TextBox 
+                    Text ="{Binding PatientID, UpdateSourceTrigger=PropertyChanged}"
+                    IsReadOnly="{Binding MotorTaskOpen}"
+                    Margin="0 0 5 0"
+                    Width="100"/>
+            </StackPanel>
+            <StackPanel
+                Grid.Column="2"
+                Margin="0 0 20 0"
+                Orientation="Horizontal">
+                <Button
+                    Grid.Column="5"
+                    Margin="0 0 20 0"
+                    Content="Ok"
+                    IsEnabled="{Binding CanCreateMotorTask}"
+                    Command="{Binding CreateMotorTaskCommand}"/>
+            </StackPanel>
+        </Grid>
+        <TextBlock 
+            Width="450"
+            Grid.Column="2"
+            HorizontalAlignment="Center"
+            Text = "Quad Stimulation Units" />
+        <Button
+            Grid.Column="3"
+            Margin="0 0 20 0"
+            Content="Test Screen"
+            IsEnabled="{Binding MotorTaskOpen}"
+            Command="{Binding GoToTestScreenCommand}"/>
+
+        <Button
+            Grid.Column="4"
+            Margin="0 0 20 0"
+            Content="Motor Task Screen"
+            IsEnabled="{Binding MotorTaskOpen}"
+            Command="{Binding GoToTestScreenCommand}"/>
+
+    </Grid>
+</UserControl>
