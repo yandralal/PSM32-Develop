@@ -14,35 +14,36 @@
             Height="15" 
             Style="{StaticResource PropertiesLabel}"
             Text="{Binding PropLabel, ElementName=root}"/>
-        <Button 
+        <Button Background="Black" 
             BorderThickness="0" 
-            Width="15" 
-            Height="15" 
+            Width="18" 
+            Height="18" 
             Margin="5 0 0 0"
             Style="{StaticResource EditableProperties}"
             Click="OnDownClicked">
             <Button.Content>
-                <fa:FontAwesome Icon="Solid_LessThan" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <fa:FontAwesome Icon="Solid_LessThan" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" />
             </Button.Content>
         </Button>
         
         <TextBox 
             Width="30" 
             Padding="0,0,0,0" 
-            Height="15" 
+            Height="19" 
+            TextAlignment="Center"
             Style="{StaticResource EditableProperties}"
             HorizontalAlignment="Center"
             Text="{Binding Value, ElementName=root}"/>
-        
-        <Button 
+
+        <Button Background="Black" 
             BorderThickness="0"  
-            Width="15" 
-            Height="15" 
+            Width="18" 
+            Height="18" 
             Margin="0,0,0,0"
             Style="{StaticResource EditableProperties}"
             Click="OnUpClicked">
             <Button.Content>
-                <fa:SvgAwesome Icon="Solid_GreaterThan" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <fa:SvgAwesome Icon="Solid_GreaterThan" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
             </Button.Content>
         </Button>
         <TextBlock 
