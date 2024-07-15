@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Psm32.CustomControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,15 @@ namespace Psm32.Views
         {
             InitializeComponent();
         }
+
+        public string ChannelColor
+        {
+            get { return (string)GetValue(ChannelColorProperty); }
+            set { SetValue(ChannelColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ChannelColorProperty =
+            DependencyProperty.Register("ChannelColor", typeof(string), typeof(QSUnitChannel), new PropertyMetadata("Black"));
+
     }
 }

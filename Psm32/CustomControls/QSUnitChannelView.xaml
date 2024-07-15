@@ -7,40 +7,41 @@
              xmlns:converters="clr-namespace:Psm32.Converters"
              xmlns:fa="http://schemas.fontawesome.com/icons/"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="100"
+             d:DesignHeight="50" d:DesignWidth="50"
              x:Name="This">
 
-    <Grid Width="100" Height="100">
+    <Grid Width="50" Height="50">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="0"/>
         </Grid.RowDefinitions>
 
-        <Canvas Grid.Row="0" Background="LightGray"/>
+        <Border Grid.Row="0" Background="LightGray" CornerRadius="5" BorderBrush="{Binding ChannelColor, ElementName=This}" BorderThickness="1,1,1,3" />
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="15"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <fa:ImageAwesome 
                 Icon="Solid_CheckCircle" 
                 Foreground="{Binding StatusColor, ElementName=This}" 
-                Margin="5 5 5 2"
+                Margin="5 4 5 2"
                 HorizontalAlignment="right"/>
 
             <TextBlock 
                 Grid.Row="1"
                 Text="{Binding ChannelId, ElementName=This}"
-                FontSize="30" 
+                FontSize="12" 
+                FontWeight="Bold"
                 Foreground="{Binding ChannelIdColor, ElementName=This}"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
         </Grid>
 
-        <Canvas 
-            Grid.Row="1"
-            Background="{Binding ChannelColor, ElementName=This}"/>
+        <!--<Canvas 
+            Grid.Row="1" Height="0"
+            Background="{Binding ChannelColor, ElementName=This}"/>-->
 
     </Grid>
 </UserControl>

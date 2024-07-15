@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Psm32.Views"
+             xmlns:views="clr-namespace:Psm32.Views"
              xmlns:cc="clr-namespace:Psm32.CustomControls"
              xmlns:converters="clr-namespace:Psm32.Converters"
              mc:Ignorable="d" 
@@ -82,14 +83,19 @@
         </ListView>
 -->
         <Grid>
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>-->
+
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            
-            <ItemsControl Grid.Column="1" Name="ItemsControlLeft" ItemsSource="{Binding UnitsLeft}">
+
+            <ItemsControl Grid.Column="0" Name="ItemsControlLeft" ItemsSource="{Binding UnitsRight}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel/>
@@ -98,15 +104,25 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <cc:QSUnitView
-                            Grid.Column="1" 
-                            Margin="0 20 0 0"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <views:MuscleTestChannelView Grid.Column="0" Margin="5 5 5 10"/>
+                            <views:MuscleTestChannelView Grid.Column="1" Margin="5 5 5 10"/>
+                            <views:MuscleTestChannelView Grid.Column="2" Margin="5 5 5 10"/>
+                            <views:MuscleTestChannelView Grid.Column="3" Margin="5 5 5 10"/>
+                        </Grid>
                     </DataTemplate>
 
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <ItemsControl Grid.Column="2" Name="ItemsControlRight" ItemsSource="{Binding UnitsRight}">
+            <ItemsControl Grid.Column="1" Name="ItemsControlRight" ItemsSource="{Binding UnitsRight}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel/>
@@ -117,9 +133,8 @@
                     <DataTemplate>
                         <cc:QSUnitView
                             Grid.Column="1" 
-                            Margin="0 20 0 0"/>
+                            Margin="0 0 0 0"/>
                     </DataTemplate>
-
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Grid>
