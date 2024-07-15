@@ -25,15 +25,5 @@ namespace Psm32.Views
         {
             InitializeComponent();
         }
-
-        public string ChannelColor
-        {
-            get { return (string)GetValue(ChannelColorProperty); }
-            set { SetValue(ChannelColorProperty, value); }
-        }
-
-        public static readonly DependencyProperty ChannelColorProperty =
-            DependencyProperty.Register("ChannelColor", typeof(string), typeof(QSUnitChannel), new PropertyMetadata("Black"));
-
     }
 }
