@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Psm32.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="800">
-    <Grid Height="200">
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Height="300">
         <ListBox BorderThickness="0" Grid.Row="1" ItemsSource="{Binding MuscleTestUnit}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>

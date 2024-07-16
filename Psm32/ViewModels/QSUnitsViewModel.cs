@@ -17,8 +17,8 @@ public class QSUnitsViewModel:ViewModelBase
     public ICommand ScanCommand { get; }
     public ICommand LoadQSUsCommand { get; }
 
-    //public IEnumerable<QSUnitViewModel> UnitsLeft => _units.Where(u => u.ID % 2 != 0).ToList();
-    public IEnumerable<QSUnitViewModel> UnitsRight => _units.ToList();
+    public IEnumerable<QSUnitViewModel> UnitsLeft => _units.Where(u => u.ID % 2 != 0).ToList();
+    public IEnumerable<QSUnitViewModel> UnitsRight => _units.Where(u => u.ID % 2 == 0).ToList();
 
     public bool CanCreateMotorTask => true;
 

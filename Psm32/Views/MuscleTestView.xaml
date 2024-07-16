@@ -7,7 +7,7 @@
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:converters="clr-namespace:Psm32.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
