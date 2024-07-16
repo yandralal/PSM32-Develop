@@ -92,13 +92,18 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="B"/>
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Grid.Column="0" Text="B" />
+                    <Button Content="^" Tag="Up" FontWeight="ExtraBold" FontSize="12" BorderThickness="0" Padding="0" Background="LightGray"/>
+                </StackPanel>
+
                 <StackPanel 
                     Grid.Column="1" 
                     Margin="10 0 0 0" 
                     Orientation="Horizontal">
-                    <RadioButton Content="Left" FontSize="12" FontWeight="Bold" Height="14" Width="50" IsChecked="{Binding Polarity, Converter={StaticResource PolarityToBoolConverter}, ConverterParameter=U}"/>
-                    <RadioButton Content="Right" FontSize="12" FontWeight="Bold" Height="14" Width="50" IsChecked="{Binding Polarity, Converter={StaticResource PolarityToBoolConverter}, ConverterParameter=B}"/>
+                    <RadioButton Content="L" FontSize="12" FontWeight="Bold" Height="14" Width="30" IsChecked="{Binding Polarity, Converter={StaticResource PolarityToBoolConverter}, ConverterParameter=U}"/>
+                    <RadioButton Content="R" FontSize="12" FontWeight="Bold" Height="14" Width="30" IsChecked="{Binding Polarity, Converter={StaticResource PolarityToBoolConverter}, ConverterParameter=B}"/>
                 </StackPanel>
             </Grid>
             <cc:NumericUpDownControl 
